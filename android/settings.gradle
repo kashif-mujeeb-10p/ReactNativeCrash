@@ -1,0 +1,3 @@
+rootProject.name = 'chacho'
+
+include ':app'
