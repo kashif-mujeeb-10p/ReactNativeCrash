@@ -5,6 +5,8 @@
  */
 
 import React, { Component } from 'react';
+// import Crashes from 'appcenter-crashes';
+import Crashes, { ErrorAttachmentLog } from 'appcenter-crashes';
 import {
   Platform,
   StyleSheet,
@@ -20,8 +22,43 @@ const instructions = Platform.select({
 });
 
 type Props = {};
+
+Crashes.setListener({
+
+  // getErrorAttachments(report) {
+  //   debugger;
+  //     const textAttachment = ErrorAttachmentLog.attachmentWithText('Hello text attachment!', 'hello.txt');
+  //     const binaryAttachment = ErrorAttachmentLog.attachmentWithBinary(`${imageAsBase64string}`, 'logo.png', 'image/png');
+  //     return [textAttachment, binaryAttachment];
+  // },
+
+    shouldProcess: function (report) {
+// debugger;
+        return true; // return true if the crash report should be processed, otherwise false.
+    }
+   //  ,
+   //
+   //  onBeforeSending: function (report) {
+   //    debugger;
+   //     // called after Crashes.process and before sending the crash.
+   // },
+   // onSendingSucceeded: function (report) {
+   //   debugger;
+   //     // called when crash report sent successfully.
+   // },
+   // onSendingFailed: function (report) {
+   //   debugger;
+   //     // called when crash report could not be sent.
+   // }
+
+    // Other callbacks must also be defined at the same time if used.
+    // Default values are used if a method with return parameter is not defined.
+})
 export default class App extends Component<Props> {
+
   render() {
+// Crashes.generateTestCrash();
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
