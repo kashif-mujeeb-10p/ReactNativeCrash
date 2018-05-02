@@ -134,9 +134,9 @@ android {
             }
         }
     }
-     lintOptions {
-          abortOnError false
-      }
+    lintOptions {
+    checkReleaseBuilds false
+}
 }
 
 dependencies {
