@@ -134,8 +134,9 @@ android {
             }
         }
     }
-     lintOptions {
-        tasks.lint.enabled = false
+   lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
@@ -155,7 +156,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 tasks.whenTaskAdded { task ->
-    if (task.name.equals("lint")) {
+    if (task.name.contains("lint")) {
         task.enabled = false
     }
 }
